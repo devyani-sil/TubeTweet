@@ -26,11 +26,26 @@ const userSchema = new Schema({
         index: true
     },
     avatar: {
-        type: String,  //cloudinary url
+       url: {
+        type: String,
         required: true
+       },
+       public_id: {
+        type: String,
+        required: true
+       }
+       
     },
     coverImage: {
-        type: String,
+
+        url: {
+            type: String,
+            
+           },
+           public_id: {
+            type: String,
+            
+           }
     },
     watchHistory: [
         {
@@ -76,6 +91,7 @@ userSchema.methods.generateAccessToken = function(){
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
+
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY
     }
 
